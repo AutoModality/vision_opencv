@@ -1,0 +1,14 @@
+Source: ros-melodic-am-vision-opencv
+Section: unknown
+Priority: extra
+Maintainer: DevOps <dev@automodality.com>
+Build-Depends: cmake, debhelper (>=9)
+Standards-Version: 3.9.6
+Homepage: https://github.com/AutoModality/vision_opencv
+
+Package: ros-melodic-am-vision-opencv
+Replaces: ros-melodic-vision-opencv, ros-melodic-cv-bridge, ros-melodic-image-geometry
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Building with OpenCV 4 and CUDA on the Nvidia Xavier NX

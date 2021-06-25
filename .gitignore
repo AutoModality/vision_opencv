@@ -1,5 +1,11 @@
 build*/
-._*
 *.pyc
-.*
-*~
+src/
+.catkin_workspace
+debian/.debhelper/
+debian/ros-melodic-am-vision-opencv*
+devel/
+build
+install
+debian/ros-melodic-am-vision-opencv.debhelper.log
+*.*deb

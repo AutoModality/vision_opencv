@@ -1,0 +1,29 @@
+name: Release Candidate
+on: 
+  push:
+    branches-ignore:
+      - master
+jobs:
+  package:
+    runs-on: [arm64,self-hosted,linux, cuda]
+    steps:
+      - uses: AutoModality/action-clean@v1.1.0
+      - uses: actions/checkout@v2
+      - uses: rlespinasse/github-slug-action@2.0.0 # for GITHUB_REF_SLUG
+      - name: Package
+        run: |
+          fakeroot debian/rules binary
+          package_filename=$(ls *.deb | head -1)
+          echo "::set-env name=PACKAGE_FILE::$package_filename"
+      - name: Deploy
+        id: deploy
+        uses: AutoModality/action-cloudsmith@0.2.0
+        with:
+          api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
+          command: 'push'
+          format: 'deb'
+          owner: 'automodality'
+          repo: 'dev'
+          distro: 'ubuntu'
+          release: 'bionic'
+          file: '${{ env.PACKAGE_FILE }}'
