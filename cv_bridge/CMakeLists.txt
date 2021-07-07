@@ -15,7 +15,7 @@ if(NOT ANDROID)
 else()
 find_package(Boost REQUIRED)
 endif()
-find_package(OpenCV REQUIRED
+find_package(OpenCV EXACT 3.3.1 REQUIRED
   COMPONENTS
     opencv_core
     opencv_imgproc
