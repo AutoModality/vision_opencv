@@ -22,4 +22,3 @@ override_dh_builddeb:
 # ignore dependency checking since opencv4 comes with Nvidia NX 
 # dpkg-shlibdeps: error: no dependency information found for /usr/lib/aarch64-linux-gnu/libopencv_calib3d.so.4.1 (used by debian/ros-melodic-am-vision-opencv/opt/ros/melodic/lib/libimage_geometry.so)
 override_dh_shlibdeps:
-	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
